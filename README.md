@@ -3,15 +3,24 @@
 ## Leetcode Editor Configure
 FileName:
 ```
-${question.frontendQuestionId}_$!velocityTool.camelCaseName(${question.titleSlug})
+$!velocityTool.camelCaseName(${question.titleSlug})${question.frontendQuestionId}
 ```
 CodeTemplate:
-```
+```java
+package leetcode.editor.cn;
+
 ${question.content}
 
-import java.utils.*
-import leetcode.common.*
+import java.util.*;
+import leetcode.common.*;
 
-${question.code}
+public class $!velocityTool.camelCaseName(${question.titleSlug})${question.frontendQuestionId}{
+  public static void main(String[] args) {
+       Solution solution = new $!velocityTool.camelCaseName(${question.titleSlug})${question.frontendQuestionId}().new Solution();
+  }
+  
+  ${question.code}
+  
+}
 
 ```

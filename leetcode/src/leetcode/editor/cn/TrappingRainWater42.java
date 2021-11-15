@@ -39,6 +39,8 @@ import leetcode.common.*;
 public class TrappingRainWater42{
   public static void main(String[] args) {
        Solution solution = new TrappingRainWater42().new Solution();
+       int[] test = new int[]{4,2,0,3,2,5};
+       System.out.println(solution.trap(test));
   }
   
   //leetcode submit region begin(Prohibit modification and deletion)
@@ -46,13 +48,29 @@ class Solution {
     public int trap(int[] height) {
         int res = 0;
         Stack<Integer> monoStack = new Stack<>();
+        monoStack.push(0);
 
-        monoStack.push(height[0]);
-        for (int i = 0; i < height.length; i++) {
-            while (!monoStack.empty() && height[monoStack.peek()] > height[i]) {
-                // TODO :
+
+        for (int i = 1; i < height.length; i++) {
+            if (height[i] < height[monoStack.peek()]) {
+                // 符合单调栈规则
+                monoStack.push(i);
+            } else if (height[i] == height[monoStack.peek()]) {
+                monoStack.pop();
+                monoStack.push(i);
+            } else {
+                while (!monoStack.empty() && height[i] > height[monoStack.peek()]) {
+                    int mid = monoStack.pop();
+                    if (!monoStack.isEmpty()) {
+                        int h = Math.min(height[i], height[monoStack.peek()]) - height[mid];
+                        int w = i - monoStack.peek() - 1;
+                        res += Math.max(h * w, 0);
+                    }
+                }
+                monoStack.push(i);
             }
         }
+        return res;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

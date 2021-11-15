@@ -9,7 +9,7 @@ FileName:
 $!velocityTool.camelCaseName(${question.titleSlug})${question.frontendQuestionId}
 ```
 CodeTemplate:
-```java
+```
 package leetcode.editor.cn;
 
 ${question.content}

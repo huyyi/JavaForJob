@@ -1,6 +1,9 @@
 # JavaForJob
 
 ## Leetcode Editor Configure
+path:
+> JavaForJob/leetcode/src
+
 FileName:
 ```
 $!velocityTool.camelCaseName(${question.titleSlug})${question.frontendQuestionId}

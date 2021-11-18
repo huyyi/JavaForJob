@@ -6,7 +6,7 @@ path:
 
 FileName:
 ```
-$!velocityTool.camelCaseName(${question.titleSlug})${question.frontendQuestionId}
+$!velocityTool.camelCaseName(${question.titleSlug})$!velocityTool.replace(${question.frontendQuestionId}, "剑指 Offer ", "LCOF")
 ```
 CodeTemplate:
 ```
@@ -20,7 +20,7 @@ import leetcode.common.*;
 public class $!velocityTool.camelCaseName(${question.titleSlug})${question.frontendQuestionId}{
   public static void main(String[] args) {
        Solution solution = new $!velocityTool.camelCaseName(${question.titleSlug})${question.frontendQuestionId}().new Solution();
-       int[] test = int[]{};
+       int[] test = new int[]{};
        System.out.println(solution.);
   }
   

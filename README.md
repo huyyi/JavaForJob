@@ -21,7 +21,6 @@ public class $!velocityTool.camelCaseName(${question.titleSlug})${question.front
   public static void main(String[] args) {
        Solution solution = new $!velocityTool.camelCaseName(${question.titleSlug})${question.frontendQuestionId}().new Solution();
        int[] test = new int[]{};
-       System.out.println(solution.);
   }
   
   ${question.code}
@@ -49,7 +48,6 @@ public class $!velocityTool.replace(${question.frontendQuestionId}, "剑指 Offe
   public static void main(String[] args) {
        Solution solution = new $!velocityTool.replace(${question.frontendQuestionId}, "剑指 Offer ", "LCOF")().new Solution();
        int[] test = new int[]{};
-       System.out.println(solution.);
   }
   
   ${question.code}

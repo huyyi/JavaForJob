@@ -34,13 +34,55 @@ public class LCOF13{
   public static void main(String[] args) {
        Solution solution = new LCOF13().new Solution();
        int[] test = new int[]{};
-       System.out.println(solution.);
+       System.out.println(solution.movingCount(14, 14, 5));
   }
   
   //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+      // 每移动一步，各位和最多+1（不为9，+1，为9，至少-8）
+      // (x,y)可达的条件是上或左可达且各位和满足条件
+      // 只依赖上左，可一维DP
     public int movingCount(int m, int n, int k) {
+        boolean[] dp = new boolean[n];
+        int res = 1;
+        dp[0] = true;
+        for (int i = 1; i < n; i++) {
+            dp[i] = dp[i - 1] && isValid(0, i, k);
+            if (dp[i]) res ++;
+        }
 
+        for (int i = 1; i < m; i++) {
+            boolean allFalse = true;
+            dp[0] = dp[0] && isValid(i, 0, k);
+            if (dp[0]) {
+                res ++;
+                allFalse = false;
+            }
+            for (int j = 1; j < n; j++) {
+                dp[j] = (dp[j] || dp[j - 1]) && isValid(i, j, k);
+                if (dp[j]) {
+                    res ++;
+                    allFalse = false;
+                }
+            }
+            if (allFalse) {
+                break;
+            }
+        }
+        return res;
+    }
+
+    static boolean isValid(int x, int y, int k) {
+        int sum = 0;
+        while (x != 0) {
+            sum += x % 10;
+            x /= 10;
+        }
+        while (y != 0) {
+            sum += y % 10;
+            y /= 10;
+        }
+        return sum <= k;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

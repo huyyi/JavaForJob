@@ -60,7 +60,7 @@ class Solution {
     }
 
     // 左闭右开
-    private static TreeNode build(int[] preorder, int[] inorder, int lpre, int rpre, int lin, int rin) {
+    private TreeNode build(int[] preorder, int[] inorder, int lpre, int rpre, int lin, int rin) {
         if (lpre >= rpre || lin >= rin) {
             return null;
         }
